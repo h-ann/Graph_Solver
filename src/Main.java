@@ -1,14 +1,18 @@
-import java.util.Random;
-
 /**
  * Created by anna on 3/14/16.
  */
 public class Main {
+
     public static void main(String[] args) {
-        System.out.println("I am happy :)");
-        Mark<Integer> mark = new Mark<>();
-        GraphSolver graphSolver = new GraphSolver(mark.getClass(), 2, 3);
-        graphSolver.graphInit();
+        int n = 3;
+        int k = 2;
+        GraphSolver<Integer> graphSolver = new GraphSolver<>( k, n);
+
+        Integer[][] markValues = GrRandIntSet.setMarkValuesRandom(k,n);
+        Integer [][][] arc = GrRandIntSet.setArcRandom(k,n);
+
+        graphSolver.graphInit(markValues,arc);
     }
+
 
 }

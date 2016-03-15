@@ -7,24 +7,25 @@ import java.util.Random;
 public class GraphSolver<T> {
     int n;
     int k;
-    protected Mark<T>[][] graph;
+    protected Mark[][] graph;
 
-    public GraphSolver( Class<T> tclass, int k, int n){
-
+     GraphSolver(int k, int n){
         this.n=n;
         this.k=k;
-        graph = (Mark<T>[][]) Array.newInstance(tclass,k,n);
+        graph = new Mark[k][];
         for(int i = 0; i<k; i++){
-            graph[i]= (Mark<T>[]) Array.newInstance(tclass,n);
+            graph[i] = new Mark[n];
         }
 
     }
 
-    public void graphInit(){
+    public void graphInit(T[][] markValues,T[][][] arc){
 
         for(int i=0; i<k; i++ ) {
             for (int j = 0; j < n; j++) {
-                graph[i][j]= new Mark<T>();
+
+                graph[i][j]= new Mark(markValues[i][j].getClass(),markValues[i][j],k,arc[i][j]);
+
             }
         }
         printGraph();
